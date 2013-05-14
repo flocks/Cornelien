@@ -1,0 +1,144 @@
+body {
+	background : url(../images/back.png)  repeat;
+	font-family: "proxima-nova",Helvetica Neue,Helvetica,sans-serif;
+}
+
+blockquote {
+	font-family: Georgia, serif;
+	font-size: 18px;
+	font-style: italic;
+	width: 500px;
+	margin: 0.25em 0;
+	padding: 0.25em 40px;
+	line-height: 1.45;
+	position: relative;
+	color: #383838;
+	margin-left : 52px;
+
+cite {
+	color: #999999;
+	font-size: 14px;
+	display: block;
+	margin-top: 5px;
+	}
+}	
+
+blockquote:before {
+	display: block;
+	content: "\201C";
+	font-size: 80px;
+	position: absolute;
+	left: -20px;
+	top: -20px;
+	color: #7a7a7a;
+}
+
+#dilemme {
+
+	margin : 75px;
+	margin-top : 100px;
+	margin-left : 230px;
+
+}
+
+.choix {
+	width: 400px;
+
+}
+
+#choix1 {
+	float:left;
+}
+
+.choixPic {
+	height: 300px;
+	width: 400px;
+	border-radius: 75px;
+	
+	margin-bottom : 50px;
+
+	
+}
+
+.choixPic:hover {
+	
+		opacity: 0.6;
+
+	}
+#img1 {
+	border : 8px solid #046380;
+}
+#img2 {
+	border : 8px solid #C03000;
+} 
+
+h2 
+{ position: relative; top: -210px; left: 0; width: 100%; 
+	span {
+		 color: white; 
+		 font: bold 24px/45px Helvetica, Sans-Serif; letter-spacing: 0.5px; 
+		 background: rgb(0, 0, 0); background: rgba(0, 0, 0, 0.7); padding: 5px; 
+
+		 .spacer      { padding: 0 0px; background: none; }
+	}
+
+}
+
+#choix2 { 
+	position:absolute;
+	left: 700px;
+	top:100ppx;
+}
+
+.choixSentence {
+	margin : 0px;
+	font-size: 14pt;
+	padding : 11px;
+
+	color : black;
+	font-weight: bold;
+	text-align: center;
+	
+	
+	border-radius: 20px;
+	opacity: 0.8;
+
+	height: 50px;
+}
+
+#loading {
+	position : absolute;
+	top : 190px;
+	left:450px;
+}
+#score2 {
+
+	background-color:  #C03000;
+	width: 100px;
+	height: 30px;
+	padding: 5px;
+	color:white;
+	font-weight: bold;
+	position: absolute;
+	top: 235px;
+	left: 700px;
+	border-radius: 0px 50px 50px 0px;
+	z-index : 1;
+}
+
+#score1 {
+	background-color: #046380;
+	width: 100px;
+	height: 30px;
+	padding: 5px;
+	color:white;
+	font-weight: bold;
+	position: absolute;
+	top: 235px;
+	border-radius: 0px 50px 50px 0px;
+	z-index:1;
+}
+
+.loading {
+	z-index:2;
+}
