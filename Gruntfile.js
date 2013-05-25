@@ -6,6 +6,17 @@ var folderMount = function folderMount(connect, point) {
   return connect.static(path.resolve(point));
 };
 
+var deployConfig = 
+{
+         auth: {
+            host: 'localhost',
+            username : 'flocks',
+            port: 22,
+            password: 'Ff56725672.'
+        },
+        path : '/home'
+}
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -16,7 +27,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['app/app.js'],
+        src: ['app/**/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -67,16 +78,51 @@ module.exports = function(grunt) {
     regarde: {
       js: {
         files: ['app/models/*.js', 'app/app.js', 'app/views/*.js', 'app/collections/*.js'],
-        tasks: ['jshint', 'concat','uglify','livereload']
+        tasks: ['hj;cl: ', 'concat','uglify','livereload']
       },
       css: {
         files: '**/*.scss',
          tasks: ['sass',,'livereload'],
          events: true
        }
+    },
+
+  s3: {
+    options: {
+      key: 'AKIAINEWILJ33O57FLLQ',
+      secret: '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',
+      bucket: 'cornelien2',
+      access: 'public-read',
+      region: 'eu-west-1'
+    },
+    dev: {
+      // These options override the defaults
+      options: {
+        encodePaths: true,
+        maxOperations: 20
+      },
+      // Files to be uploaded.
+      upload: [
+        {
+          src: 'dist/cornelien.min.js',
+          dest: 'dist/cornelien.min.js',
+          gzip: true
+        },
+        {
+          src: 'index.html',
+          dest: 'index.html',
+        },
+        
+      ]
+
     }
+
+  }
   });
 
+
+
+  grunt.loadNpmTasks('grunt-s3');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -87,9 +133,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-livereload');
 
 
-
   grunt.registerTask('test', ['jshint', 'qunit']);
 
   grunt.registerTask('server', ['livereload-start', 'connect', 'regarde']);
+  grunt.registerTask('build', ['concat', 'uglify']);
 
 };
