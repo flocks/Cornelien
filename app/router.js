@@ -13,15 +13,13 @@ define(['models/dilemme', 'models/choice', 'views/dilemmeView', 'collections/dil
 		},
 
 		home : function() {
-			console.log("HOME");
 
-
-			
 		},
 		listChoices : function() {
 			console.log("liste des choices");
 		},
 		dilemme : function(idDilemme) {
+
 			var dilemme = new DilemmeModel({id : idDilemme});
 			var query = new Parse.Query("Dilemme");
 			query.include("choix1");
@@ -31,8 +29,7 @@ define(['models/dilemme', 'models/choice', 'views/dilemmeView', 'collections/dil
 			query.get(idDilemme).then(function(objDilemme) {
 				dilemme = objDilemme;
 				this.dilemmeView = new DilemmeView({model : dilemme});
-							$('#loading').hide();
-
+				$('#loading').hide();
 
 			},
 			function(error) {

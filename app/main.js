@@ -1,5 +1,5 @@
 requirejs.config({
-  baseUrl: 'app/',
+  baseUrl: '/app/',
   shim: {
     'lib/backbone': {
       deps: ['lib/jquery', 'lib/lodash'],

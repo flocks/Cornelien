@@ -86,12 +86,37 @@ module.exports = function(grunt) {
          events: true
        }
     },
+ requirejs: {
+  compile: {
+    options: {
+      name : "main",
+      baseUrl: "app/",
+      mainConfigFile: "app/main.js",
+      out: "dist/optimized.js",
+      logLevel: 0,
+      preserveLicenseComments: false
+    }
+  }
+},
+
+  copy : {
+    main: {
+      files: [
+	{expand: true, src: ['index.html'], dest: 'dist/', filter: 'isFile'}, // includes files in path
+	{expand : false, src: ['app/styles/main.css'], dest : "dist/styles/main.css" },
+	{expand : false, src: ['app/lib/require.js'], dest : "dist/require.js" }
+
+      ]
+   }
+  },
+
 
   s3: {
     options: {
       key: 'AKIAINEWILJ33O57FLLQ',
       secret: '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',
-      bucket: 'cornelien2',
+      bucket: 'cornelien.com',
+      secure : false,
       access: 'public-read',
       region: 'eu-west-1'
     },
@@ -104,14 +129,27 @@ module.exports = function(grunt) {
       // Files to be uploaded.
       upload: [
         {
-          src: 'dist/cornelien.min.js',
-          dest: 'dist/cornelien.min.js',
-          gzip: true
+	  src: 'dist/optimized.js',
+	  dest: 'optimized.js'
         },
         {
           src: 'index.html',
           dest: 'index.html',
         },
+	{
+	  src: 'dist/styles/main.css',
+	  dest: 'styles/main.css',
+	},
+	 {
+	  src: 'dist/require.js',
+	  dest: 'require.js',
+	},
+	 {
+	  src: 'app/images/*',
+	  dest: 'images/'
+	}
+
+
         
       ]
 
@@ -120,8 +158,8 @@ module.exports = function(grunt) {
   }
   });
 
-
-
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-s3');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -136,6 +174,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['jshint', 'qunit']);
 
   grunt.registerTask('server', ['livereload-start', 'connect', 'regarde']);
-  grunt.registerTask('build', ['concat', 'uglify']);
+  grunt.registerTask('build', ['requirejs','sass' ,'copy']);
+  grunt.registerTask('deploy', ['s3'])
 
 };
