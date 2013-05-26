@@ -1,7 +1,7 @@
 define(["router", "collections/dilemmes", 'views/loaderView'], function(router, DilemmeCollection, loader) {
   return {
     init: function() {
-      Parse.initialize("Y3TSixAP6vUPmX5OlPCIKjbb4DkbpXZaeMzQmfx5", "Y2Du5zzTK3aDnsWQHqHZqjrQAKit6LirfyWUy75m");
+      Parse.initialize("", "");
       var compteur = 1;
       var appRouter = new router();
       Backbone.history.start();
