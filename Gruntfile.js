@@ -69,11 +69,11 @@ module.exports = function(grunt) {
     regarde: {
       js: {
         files: ['app/models/*.js', 'app/app.js', 'app/views/*.js', 'app/collections/*.js'],
-        tasks: ['buid','livereload']
+        tasks: ['build','livereload']
       },
       css: {
         files: '**/*.scss',
-         tasks: ['sass',,'livereload'],
+         tasks: ['sass','livereload'],
          events: true
        }
     },
