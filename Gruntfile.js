@@ -6,16 +6,7 @@ var folderMount = function folderMount(connect, point) {
   return connect.static(path.resolve(point));
 };
 
-var deployConfig = 
-{
-         auth: {
-            host: 'localhost',
-            username : 'flocks',
-            port: 22,
-            password: 'Ff56725672.'
-        },
-        path : '/home'
-}
+
 
 module.exports = function(grunt) {
 
@@ -78,7 +69,7 @@ module.exports = function(grunt) {
     regarde: {
       js: {
         files: ['app/models/*.js', 'app/app.js', 'app/views/*.js', 'app/collections/*.js'],
-        tasks: ['hj;cl: ', 'concat','uglify','livereload']
+        tasks: ['buid','livereload']
       },
       css: {
         files: '**/*.scss',
