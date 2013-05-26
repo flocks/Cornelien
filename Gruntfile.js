@@ -104,12 +104,7 @@ module.exports = function(grunt) {
 
   s3: {
     options: {
-      key: 'AKIAINEWILJ33O57FLLQ',
-      secret: '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',
-      bucket: 'cornelien.com',
-      secure : false,
-      access: 'public-read',
-      region: 'eu-west-1'
+    	// SECRET ;)
     },
     dev: {
       // These options override the defaults
