@@ -1,6 +1,6 @@
 <h1>Cornelien</h1>
 
-Life is made by choice you have to make. 
+Life is made of choices.
 
 ![Alt text](/readimg.png "Optional title")
 
